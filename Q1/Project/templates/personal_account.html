@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blogging Platform</title>
+</head>
+
+<body>
+    <h1>Welcome {{ blogger }}</h1>
+    <form method="post" action="/{{ blogger }}/publish_new_blog">
+        <button type="submit">Publish new Blog</button>
+    </form>
+    
+    <h2>Your Published Blogs</h2>
+    <ul>
+        {% for blog in blogs %}
+        <li>
+            <h3>{{ blog.blogName }}</h3>
+            <p>Author: {{ blog.blogAuthor }}</p>
+            <p>Likes: {{ blog.likes }}
+            </p>
+            <p>Dislikes: {{ blog.dislikes }}
+            </p>
+            <p>Content: {{ blog.content }}</p>
+            <form method="POST" action="/{{ blog._id }}/delete">
+                <button type="submit">Delete this blog</button>
+            </form>
+            <form method="POST" action="/{{ blog._id }}/modify">
+                <button type="submit">Modify this blog</button>
+            </form>
+            
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blogging Platform</title>
+</head>
+
+<body>
+    <h1>Welcome to the Blogging Platform</h1>
+    <h2>Published Blogs</h2>
+    <ul>
+        {% for blog in blogs %}
+        <li>
+            <h3>{{ blog.blogName }}</h3>
+            <p>Author: {{ blog.blogAuthor }}</p>
+            <p>Likes: {{ blog.likes }} | Dislikes: {{ blog.dislikes }}</p>
+            <p>Content: {{ blog.content }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blogging Platform</title>
+</head>
+
+<body>
+    <h1>Welcome to the Blogging Platform</h1>
+    <form method="GET" action="/register">
+        <button type="submit">Register/Login</button>
+    </form>
+    <h2>Published Blogs</h2>
+    <ul>
+        {% for blog in blogs %}
+        <li>
+            <h3>{{ blog.blogName }}</h3>
+            <p>Author: {{ blog.blogAuthor }}</p>
+            <p>Likes: {{ blog.likes }}
+            <form method="POST" action="/update_likes/{{ blog._id }}/like">
+                <button type="submit">Like</button>
+            </form>
+            </p>
+            <p>Dislikes: {{ blog.dislikes }}
+            <form method="POST" action="/update_likes/{{ blog._id }}/dislike">
+                <button type="submit">Dislike</button>
+            </form>
+            </p>
+            <p>Content: {{ blog.content }}</p>
+            <h4>Add Comment:</h4>
+            <form method="POST" action="/submit/{{ blog._id }}">
+                <input type="text" name="commenttext" required>
+                <button type="submit">Post Comment</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

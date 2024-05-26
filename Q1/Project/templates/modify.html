@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blogging Platform</title>
+</head>
+
+<body>
+    <h1>Welcome {{ blogger }}. Makes changes to your Blog.</h1>
+
+    <form method="POST" action="/{{ blogs._id }}/{{ blogger }}/modify_publish">
+        <label for="modifiedblogname">New Blog Name : </label><br>
+        <input type="text" id="modifiedblogname" value="{{ blogs.blogName }}" name="modifiedblogname" required><br><br>
+
+        <label for="modifiedblogcontent">New Blog Content</label><br>
+        <input type="text" id="modifiedblogcontent" value="{{ blogs.content }}" name="modifiedblogcontent" required><br><br>
+
+        <button type="submit">Publish</button>
+
+    </form>
+
+</body>
+
+</html>
